@@ -43,9 +43,11 @@ function navCreator() {
 
  for (let sxn = 0; sxn < sections.length; sxn ++) {
     const newElement = document.createElement('li');
-    let linkName = sections[sxn].getAttribute('data-nav');
     let sectionId = sections[sxn].getAttribute('id');
-    newElement.innerHTML =  '<a href=\"#' + sectionId + '\" class=\"menu__link\">' + linkName + '</a>';
+    let fxnToRun = 'scrollToSxn(' + sectionId + ')';
+    newElement.setAttribute('onclick', fxnToRun);
+    newElement.classList.add('menu__link');
+    newElement.innerHTML =  sections[sxn].getAttribute('data-nav');;
     navDocFrag.appendChild(newElement);
       }
   navList.appendChild(navDocFrag);
@@ -55,8 +57,12 @@ function navCreator() {
 
 
 // Scroll to anchor ID using scrollTO event
+function scrollToSxn(sectionId) {
+var element = document.getElementById(sectionId);
+console.log(element);
 
-
+element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+}
 /**
  * End Main Functions
  * Begin Events
