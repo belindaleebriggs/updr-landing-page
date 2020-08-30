@@ -43,10 +43,9 @@ function navCreator() {
 
  for (let sxn = 0; sxn < sections.length; sxn ++) {
     const newElement = document.createElement('li');
-    newElement.className = 'menu__link';
     let linkName = sections[sxn].getAttribute('data-nav');
     let sectionId = sections[sxn].getAttribute('id');
-    newElement.innerHTML =  '<a href=\"#' + sectionId + '\">' + linkName + '</a>';
+    newElement.innerHTML =  '<a href=\"#' + sectionId + '\" class=\"menu__link\">' + linkName + '</a>';
     navDocFrag.appendChild(newElement);
       }
   navList.appendChild(navDocFrag);

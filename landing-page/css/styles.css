@@ -72,6 +72,8 @@ section {
 
 .navbar__menu li {
     display: inline-block;
+    float: left;
+    padding-left: 8px;
 }
 
 .navbar__menu .menu__link {
@@ -80,7 +82,7 @@ section {
     font-weight: bold;
     text-decoration: none;
     color: #000;
-}
+  }
 
 .navbar__menu .menu__link:hover {
     background: #333;
