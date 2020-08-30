@@ -34,17 +34,22 @@
 */
 
 // build the nav
-function createNav() {
+function navCreator() {
 // Build nav menu using document fragment
 // get sections so we can access their data-nav values to create the section links
- var sections = document.querySelectorAll('section');
+ const sections = document.querySelectorAll('section');
+ const navList = document.getElementById('navbar__list');
  const navDocFrag = document.createDocumentFragment();
+
  for (let sxn = 0; sxn < sections.length; sxn ++) {
-    const newElement = document.createElement("li");
-    newElement.innerText = sections[sxn].data-nav;
-    myDocFrag.appendChild(newElement);
+    const newElement = document.createElement('li');
+    newElement.className = 'menu__link';
+    let linkName = sections[sxn].getAttribute('data-nav');
+    let sectionId = sections[sxn].getAttribute('id');
+    newElement.innerHTML =  '<a href=\"#' + sectionId + '\">' + linkName + '</a>';
+    navDocFrag.appendChild(newElement);
       }
-  document.body.appendChild(myDocFrag);
+  navList.appendChild(navDocFrag);
 }
 
 // Add class 'active' to section when near top of viewport
