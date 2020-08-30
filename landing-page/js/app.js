@@ -43,8 +43,10 @@ function navCreator() {
 
  for (let sxn = 0; sxn < sections.length; sxn ++) {
     const newElement = document.createElement('li');
+    // get a handle to the section with the current id
     let sectionId = sections[sxn].getAttribute('id');
     let fxnToRun = 'scrollToSxn(' + sectionId + ')';
+
     newElement.setAttribute('onclick', fxnToRun);
     newElement.classList.add('menu__link');
     newElement.innerHTML =  sections[sxn].getAttribute('data-nav');;
@@ -58,10 +60,7 @@ function navCreator() {
 
 // Scroll to anchor ID using scrollTO event
 function scrollToSxn(sectionId) {
-var element = document.getElementById(sectionId);
-console.log(element);
-
-element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    sectionId.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 }
 /**
  * End Main Functions
