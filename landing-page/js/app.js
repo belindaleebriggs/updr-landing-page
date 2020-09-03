@@ -24,18 +24,7 @@
  * Start Helper Functions
  *
 */
-// get the Location of the element on the page
-function elementInViewport(element) {
-  const location = element.getBoundingClientRect();
 
-  if(location.top <= 150 && location.bottom >= 150) {
-      console.log(true);
-      return true;
-    } else {
-      console.log(false);
-      return false;
-}
-}
 
 
 /**
@@ -76,7 +65,18 @@ function scrollToSxn(sectionId) {
  * Begin Events
  *
 */
+// get the Location of the element on the page
+function elementInViewport(element) {
+  const location = element.getBoundingClientRect();
 
+  if(location.top <= 150 && location.bottom >= 150) {
+      console.log(true);
+      return true;
+    } else {
+      console.log(false);
+      return false;
+}
+}
 // Add class 'active' to section when near top of viewport
 function setActive() {
   const sections = document.querySelectorAll('section');
