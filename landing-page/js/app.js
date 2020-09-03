@@ -97,7 +97,8 @@ function setActive() {
 
 // add event listener to the sections to listen for scrolling into viewport
 function eventListener() {
-  let watchMeScroll = document.querySelector('main');
-  console.log('eventListener initiated');
-  watchMeScroll.addEventListener('scroll', setActive());
+  // let watchMeScroll = document.querySelector('main');
+  // console.log('eventListener initiated');
+  // watchMeScroll.addEventListener('scroll', setActive());
+  window.addEventListener('scroll', setActive);
 }
