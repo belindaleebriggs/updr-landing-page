@@ -67,18 +67,20 @@ function scrollToSxn(sectionId) {
 */
 // get the Location of the element on the page
 function elementInViewport(element) {
+  console.log('elementInViewport initiated');
   const location = element.getBoundingClientRect();
 
   if(location.top <= 150 && location.bottom >= 150) {
-      console.log(true);
+      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' location.bottom + ') returns true');
       return true;
     } else {
-      console.log(false);
+      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' location.bottom + ') returns false');
       return false;
 }
 }
 // Add class 'active' to section when near top of viewport
 function setActive() {
+  console.log('setActive initiated');
   const sections = document.querySelectorAll('section');
 
   for (sxn = 0; sxn < sections.length; sxn ++) {
@@ -96,5 +98,6 @@ function setActive() {
 // add event listener to the sections to listen for scrolling into viewport
 function eventListener() {
   let watchMeScroll = document.querySelector('main');
-  watchMeScroll.addEventListener('scroll', setActive);
+  console.log('eventListener initiated');
+  watchMeScroll.addEventListener('scroll', setActive());
 }
