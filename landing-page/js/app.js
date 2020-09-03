@@ -60,11 +60,7 @@ function navCreator() {
 
 // Scroll to anchor ID using scrollTO event
 function scrollToSxn(sectionId) {
-//var element = document.getElementById(sectionId);
-//console.log(sectionId);
-
-//element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-sectionId.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  sectionId.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 }
 
 /**
@@ -76,24 +72,28 @@ sectionId.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 // get the Location of the element on the page
 function elementInViewport(element) {
   const location = element.getBoundingClientRect();
-  if(location.top >= 0 && location.left >= 0 && location.right <= window.innerWidth && location.bottom <= window.innerHeight) {
+
+  if(location.top <= 150 && location.bottom >= 150) {
+      console.log(true);
       return true;
     } else {
+      console.log(false);
       return false;
 }
 }
 
 // Set sections as active
 function setActive() {
-  console.log('Your listener is firing');
   const sections = document.querySelectorAll('section');
 
   for (sxn = 0; sxn < sections.length; sxn ++) {
      // loop through each section checking if it's in the viewport
      if (elementInViewport(sections[sxn]) === 'false') {
-          sections[sxn].classList.toggle('section--active', sections[sxn].classList.contains("section--active"));           //remove the class active if it exists
+          if (sections[sxn].classList.contains('section--active')) {          sections[sxn].classList.remove('section--active');           //remove the class active if it exists
+        } console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
       } else {
           sections[sxn].classList.toggle('section--active');// set the class to Active
+          console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
         }
       }
     }
@@ -102,4 +102,4 @@ function setActive() {
 function eventListener() {
   let watchMeScroll = document.querySelector('main');
   watchMeScroll.addEventListener('scroll', setActive());
-}
+} 
