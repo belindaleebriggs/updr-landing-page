@@ -71,12 +71,12 @@ function elementInViewport(element) {
   const location = element.getBoundingClientRect();
 
   if(location.top <= 150 && location.bottom >= 150) {
-      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' location.bottom + ') returns true');
+      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns true');
       return true;
     } else {
-      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' location.bottom + ') returns false');
+      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns false');
       return false;
-}
+    }
 }
 // Add class 'active' to section when near top of viewport
 function setActive() {
