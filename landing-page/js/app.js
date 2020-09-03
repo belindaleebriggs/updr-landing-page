@@ -59,6 +59,13 @@ function navCreator() {
 
 
 // Scroll to anchor ID using scrollTO event
+function scrollToSxn(sectionId) {
+//var element = document.getElementById(sectionId);
+//console.log(sectionId);
+
+//element.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+sectionId.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+}
 
 /**
  * End Main Functions
@@ -79,15 +86,17 @@ function elementInViewport(element) {
 // Set sections as active
 function setActive() {
   console.log('Your listener is firing');
-     const sections = document.querySelectorAll('section');
+  const sections = document.querySelectorAll('section');
 
-     for (let sxn = 0; sxn < sections.length; sxn ++);    // loop through each section checking if it's in the viewport
-        if (elementInViewport(sections[sxn]) === false) {
-            sections[sxn].classList.toggle('active', sections[sxn].classList.contains("active"));           //remove the class active if it exists
-        } else {
-            sections[sxn].classList.toggle('active');// set the class to Active
+  for (sxn = 0; sxn < sections.length; sxn ++) {
+     // loop through each section checking if it's in the viewport
+     if (elementInViewport(sections[sxn]) === 'false') {
+          sections[sxn].classList.toggle('section--active', sections[sxn].classList.contains("section--active"));           //remove the class active if it exists
+      } else {
+          sections[sxn].classList.toggle('section--active');// set the class to Active
         }
-}
+      }
+    }
 
 // add event listener to the sections to listen for scrolling into viewport
 function eventListener() {
