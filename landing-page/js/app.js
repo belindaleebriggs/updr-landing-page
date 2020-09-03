@@ -35,8 +35,8 @@
 
 // build the nav
 function navCreator() {
-// Build nav menu using document fragment
-// get sections so we can access their data-nav values to create the section links
+  // Build nav menu using document fragment
+  // get sections so we can access their data-nav values to create the section links
  const sections = document.querySelectorAll('section');
  const navList = document.getElementById('navbar__list');
  const navDocFrag = document.createDocumentFragment();
@@ -59,17 +59,38 @@ function navCreator() {
 
 
 // Scroll to anchor ID using scrollTO event
-function scrollToSxn(sectionId) {
-    sectionId.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-}
+
 /**
  * End Main Functions
  * Begin Events
  *
 */
 
-// Build menu
-
-// Scroll to section on link click
+// get the Location of the element on the page
+function elementInViewport(element) {
+  const location = element.getBoundingClientRect();
+  if(location.top >= 0 && location.left >= 0 && location.right <= window.innerWidth && location.bottom <= window.innerHeight) {
+      return true;
+    } else {
+      return false;
+}
+}
 
 // Set sections as active
+function setActive() {
+  console.log('Your listener is firing');
+     const sections = document.querySelectorAll('section');
+
+     for (let sxn = 0; sxn < sections.length; sxn ++);    // loop through each section checking if it's in the viewport
+        if (elementInViewport(sections[sxn]) === false) {
+            sections[sxn].classList.toggle('active', sections[sxn].classList.contains("active"));           //remove the class active if it exists
+        } else {
+            sections[sxn].classList.toggle('active');// set the class to Active
+        }
+}
+
+// add event listener to the sections to listen for scrolling into viewport
+function eventListener() {
+  let watchMeScroll = document.querySelector('main');
+  watchMeScroll.addEventListener('scroll', setActive());
+}
