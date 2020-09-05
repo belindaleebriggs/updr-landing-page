@@ -84,15 +84,20 @@ function elementInViewport(element) {
 function setActive() {
   console.log('setActive initiated');
   const sections = document.querySelectorAll('section');
+  const navLinks = document.querySelectorAll('#navbar__list > li')
 
   for (let sxn = 0; sxn < sections.length; sxn ++) {
      // loop through each section checking if it's in the viewport
      if (elementInViewport(sections[sxn])) {
-          sections[sxn].classList.add('section--active');// set the class to Active
+          sections[sxn].classList.add('section--active');// set section class to Active
+          navLinks[sxn].classList.add('section--active'); //set the navitem class to Active
           console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
+          console.log('Link ' + navLinks[sxn].id + ' class list:' + navLinks[sxn].classList);
       } else {
-        sections[sxn].classList.remove('section--active');           //remove the class active if it exists
-        console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
+          sections[sxn].classList.remove('section--active');           //remove the class active if it exists
+          navLinks[sxn].classList.remove('section--active'); //remove the navitem class  Active
+          console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
+          console.log('Link ' + navLinks[sxn].id + ' class list:' + navLinks[sxn].classList);
         }
       }
     }
