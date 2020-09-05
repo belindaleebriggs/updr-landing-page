@@ -68,13 +68,15 @@ function scrollToSxn(sectionId) {
 // get the Location of the element on the page
 function elementInViewport(element) {
   console.log('elementInViewport initiated');
+  // get element location relative to the viewport
   const location = element.getBoundingClientRect();
+  // compare element location in relation to window properties to determine if it's in viewport and return true if is
 
-  if(location.top <= 150 && location.bottom >= 150) {
-      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns true');
+  if(location.top >= 0 && location.left >= 0) && (location.right <= window.innerWidth && location.bottom <= window.innerHeight) {
+      console.log('Element: ' + element.id + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns true');
       return true;
     } else {
-      console.log('Element: ' + element + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns false');
+      console.log('Element: ' + element.id + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns false');
       return false;
     }
 }
