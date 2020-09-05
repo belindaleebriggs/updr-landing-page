@@ -72,11 +72,11 @@ function elementInViewport(element) {
   const location = element.getBoundingClientRect();
   // compare element location in relation to window properties to determine if it's in viewport and return true if is
 
-  if(location.top >= 0 && location.left >= 0) && (location.right <= window.innerWidth && location.bottom <= window.innerHeight) {
-      console.log('Element: ' + element.id + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns true');
+  if(location.top >= 0 && location.left >= 0 && location.right <= window.innerWidth && location.bottom <= window.innerHeight) {
+      console.log(element.id + ' is in the viewport returned True');
       return true;
     } else {
-      console.log('Element: ' + element.id + ' (top,bottom): (' +  location.top + ',' + location.bottom + ') returns false');
+      console.log(element.id + ' is NOT in the viewport False');
       return false;
     }
 }
@@ -87,12 +87,12 @@ function setActive() {
 
   for (sxn = 0; sxn < sections.length; sxn ++) {
      // loop through each section checking if it's in the viewport
-     if (elementInViewport(sections[sxn]) === 'false') {
-          if (sections[sxn].classList.contains('section--active')) {          sections[sxn].classList.remove('section--active');           //remove the class active if it exists
-        } console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
-      } else {
-          sections[sxn].classList.toggle('section--active');// set the class to Active
+     if (elementInViewport(sections[sxn])) {
+          sections[sxn].classList.add('section--active');// set the class to Active
           console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
+      } else {
+        sections[sxn].classList.remove('section--active');           //remove the class active if it exists
+        console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
         }
       }
     }
