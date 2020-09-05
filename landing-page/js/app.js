@@ -49,7 +49,7 @@ function navCreator() {
 
     newElement.setAttribute('onclick', fxnToRun);
     newElement.classList.add('menu__link');
-    newElement.innerHTML =  sections[sxn].getAttribute('data-nav');;
+    newElement.innerHTML =  sections[sxn].getAttribute('data-nav');
     navDocFrag.appendChild(newElement);
       }
   navList.appendChild(navDocFrag);
@@ -85,7 +85,7 @@ function setActive() {
   console.log('setActive initiated');
   const sections = document.querySelectorAll('section');
 
-  for (sxn = 0; sxn < sections.length; sxn ++) {
+  for (let sxn = 0; sxn < sections.length; sxn ++) {
      // loop through each section checking if it's in the viewport
      if (elementInViewport(sections[sxn])) {
           sections[sxn].classList.add('section--active');// set the class to Active
