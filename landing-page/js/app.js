@@ -41,7 +41,7 @@ function navCreator() {
  const navList = document.getElementById('navbar__list');
  const navDocFrag = document.createDocumentFragment();
 
- for (let sxn = 0; sxn < sections.length; sxn ++) {
+ for (sxn of sections) {
     const newElement = document.createElement('li');
     // get a handle to the section with the current id
     let sectionId = sections[sxn].getAttribute('id');
@@ -86,7 +86,7 @@ function setActive() {
   const sections = document.querySelectorAll('section');
   const navLinks = document.querySelectorAll('#navbar__list > li')
 
-  for (let sxn = 0; sxn < sections.length; sxn ++) {
+  for (sxn of sections) {
      // loop through each section checking if it's in the viewport
      if (elementInViewport(sections[sxn])) {
           sections[sxn].classList.add('section--active');// set section class to Active
