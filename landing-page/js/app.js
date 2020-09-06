@@ -46,15 +46,18 @@ function navCreator() {
     // get a handle to the section with the current id
 
     let sectionId = sxn.id;
-    let fxnToRun1 = 'scrollToSxn(' + sectionId + ')';
-    let fxnToRun2 = 'activeNav(' + sxn + ')';
+    function navFxns() {
+      scrollToSxn(sectionId);
+      activeNav(sxn);
+    }
 
 // Attempt with just one function, start wtih activeNav aka fxnToRun2
-    newElement.setAttribute('onclick', fxnToRun2);
+    newElement.setAttribute('onclick',navFxns);
 
 // Code to add both functions to listener.  Not working even though no console errors
 //    newElement.setAttribute('onclick', fxnToRun1 + '; ' + fxnToRun2);
     newElement.classList.add('menu__link');
+    newElement.classList.add(sectionId); //used later in activeNav
     newElement.innerHTML =  sxn.getAttribute('data-nav');
     navDocFrag.appendChild(newElement);
       }
@@ -79,26 +82,27 @@ function elementInViewport(element) {
   // compare element location in relation to window properties to determine if it's in viewport and return true if is
 
   if(location.top >= 0 && location.left >= 0 && location.right <= window.innerWidth && location.bottom <= window.innerHeight) {
-      console.log(element.id + ' is in the viewport returned True');
       return true;
     } else {
-      console.log(element.id + ' is NOT in the viewport False');
       return false;
     }
 }
+
 //When a section is active or when top-level nav has been clicked, turn the corresponding nav item to it's active state by adding the appropriate css class and removing the active class from inactive links
 // function should be added eventlisteners for link click and section moving into viewport
 function activeNav(sxn) {
+  console.log("activeNav triggered");
   // triggers based on the active section/nav links
   // when activated, remove the active class from all the nav links/section
   const navLinks = document.querySelectorAll('#navbar__list > li')
   // get the ID of the active section
   let activeID = sxn.id;
+  console.log('the id of the active sxn is: ' + activeID)
     for (navLink of navLinks) {
       navLink.classList.remove('section--active');
       // put the active class back on only the section id equals the link html that triggered the Functions
-      console.log(navLink.innerHTML);
-      if (activeID == navLink.innerHTML) {
+      console.log('classes of the current selected navlink is ' + navLink.classList);
+      if (navLink.classList.contains(activeID)) {
         navLink.classList.toggle('section--active');
       }
    }
@@ -106,7 +110,6 @@ function activeNav(sxn) {
 
 // Add class 'active' to section when near top of viewport
 function setActive() {
-  console.log('setActive initiated');
   const sections = document.querySelectorAll('section');
 
   for (sxn of sections) {
@@ -114,10 +117,11 @@ function setActive() {
      if (elementInViewport(sxn)) {
           sxn.classList.add('section--active');  // set section class to Active
           activeNav(sxn) //set the navitem classes active/or remove
-          console.log('Section ' + sxn.id + ' class list:' + sxn.classList);
+          console.log(sxn.id + " IS in the viewport")
       } else {
           sxn.classList.remove('section--active');   //remove the class active if it exists
-          console.log('Section ' + sxn.id + ' class list:' + sxn.classList);
+          console.log(sxn.id + " is NOT the viewport")
+
         }
       }
     }
