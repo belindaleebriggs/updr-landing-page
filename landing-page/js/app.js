@@ -49,7 +49,11 @@ function navCreator() {
     let fxnToRun1 = 'scrollToSxn(' + sectionId + ')';
     let fxnToRun2 = 'activeNav(' + sxn + ')';
 
-    newElement.setAttribute('onclick', fxnToRun1 + '; ' + fxnToRun2);
+// Attempt with just one function, start wtih scrollToSxn aka fxnToRun1
+    newElement.setAttribute('onclick', fxnToRun1);
+
+// Code to add both functions to listener.  Not working even though no console errors
+//    newElement.setAttribute('onclick', fxnToRun1 + '; ' + fxnToRun2);
     newElement.classList.add('menu__link');
     newElement.innerHTML =  sxn.getAttribute('data-nav');
     navDocFrag.appendChild(newElement);
