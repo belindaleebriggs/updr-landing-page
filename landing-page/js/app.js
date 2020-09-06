@@ -45,9 +45,10 @@ function navCreator() {
     const newElement = document.createElement('li');
     // get a handle to the section with the current id
     let sectionId = sections[sxn].getAttribute('id');
-    let fxnToRun = 'scrollToSxn(' + sectionId + ')';
+    let fxnToRun1 = 'scrollToSxn(' + sectionId + ')';
+    let fxnToRun2 = 'activeNav(' + sxn + ')';
 
-    newElement.setAttribute('onclick', fxnToRun);
+    newElement.setAttribute('onclick', fxnToRun1 + '; ' + fxnToRun2);
     newElement.classList.add('menu__link');
     newElement.innerHTML =  sections[sxn].getAttribute('data-nav');
     navDocFrag.appendChild(newElement);
@@ -80,24 +81,33 @@ function elementInViewport(element) {
       return false;
     }
 }
+//When a section is active or when top-level nav has been clicked, turn the corresponding nav item to it's active state by adding the appropriate css class and removing the active class from inactive links
+// function should be added eventlisteners for link click and section moving into viewport
+function activeNav(sxn) {
+  // triggers based on the active section/nav links
+  // when activated, remove the active class from all the nav links/section
+  const navLinks = document.querySelectorAll('#navbar__list > li')
+    for (navLink of navLinks) {
+      navLinks[navLink].classList.remove('section--active');
+  }
+  // put the active class back on only the section/nav link that triggered the Functions
+  navLinks[sxn]..classList.remove('section--active');
+}
+
 // Add class 'active' to section when near top of viewport
 function setActive() {
   console.log('setActive initiated');
   const sections = document.querySelectorAll('section');
-  const navLinks = document.querySelectorAll('#navbar__list > li')
 
   for (sxn of sections) {
      // loop through each section checking if it's in the viewport
      if (elementInViewport(sections[sxn])) {
-          sections[sxn].classList.add('section--active');// set section class to Active
-          navLinks[sxn].classList.add('section--active'); //set the navitem class to Active
+          sections[sxn].classList.add('section--active');  // set section class to Active
+          activeNav(sxn) //set the navitem classes active/or remove
           console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
-          console.log('Link ' + navLinks[sxn].id + ' class list:' + navLinks[sxn].classList);
       } else {
-          sections[sxn].classList.remove('section--active');           //remove the class active if it exists
-          navLinks[sxn].classList.remove('section--active'); //remove the navitem class  Active
+          sections[sxn].classList.remove('section--active');   //remove the class active if it exists
           console.log('Section ' + sxn + ' class list:' + sections[sxn].classList);
-          console.log('Link ' + navLinks[sxn].id + ' class list:' + navLinks[sxn].classList);
         }
       }
     }
