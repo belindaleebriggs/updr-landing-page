@@ -49,8 +49,8 @@ function navCreator() {
     let fxnToRun1 = 'scrollToSxn(' + sectionId + ')';
     let fxnToRun2 = 'activeNav(' + sxn + ')';
 
-// Attempt with just one function, start wtih scrollToSxn aka fxnToRun1
-    newElement.setAttribute('onclick', fxnToRun1);
+// Attempt with just one function, start wtih activeNav aka fxnToRun2
+    newElement.setAttribute('onclick', fxnToRun2);
 
 // Code to add both functions to listener.  Not working even though no console errors
 //    newElement.setAttribute('onclick', fxnToRun1 + '; ' + fxnToRun2);
