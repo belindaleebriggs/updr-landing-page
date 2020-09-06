@@ -41,16 +41,17 @@ function navCreator() {
  const navList = document.getElementById('navbar__list');
  const navDocFrag = document.createDocumentFragment();
 
- for (sxn of sections) {
+ for (let sxn of sections) {
     const newElement = document.createElement('li');
     // get a handle to the section with the current id
-    let sectionId = sections[sxn].getAttribute('id');
+
+    let sectionId = sxn.id;
     let fxnToRun1 = 'scrollToSxn(' + sectionId + ')';
     let fxnToRun2 = 'activeNav(' + sxn + ')';
 
     newElement.setAttribute('onclick', fxnToRun1 + '; ' + fxnToRun2);
     newElement.classList.add('menu__link');
-    newElement.innerHTML =  sections[sxn].getAttribute('data-nav');
+    newElement.innerHTML =  sxn.getAttribute('data-nav');
     navDocFrag.appendChild(newElement);
       }
   navList.appendChild(navDocFrag);
@@ -91,7 +92,7 @@ function activeNav(sxn) {
       navLinks[navLink].classList.remove('section--active');
   }
   // put the active class back on only the section/nav link that triggered the Functions
-  navLinks[sxn]..classList.remove('section--active');
+  navLinks[sxn].classList.remove('section--active');
 }
 
 // Add class 'active' to section when near top of viewport
@@ -114,8 +115,5 @@ function setActive() {
 
 // add event listener to the sections to listen for scrolling into viewport
 function eventListener() {
-  // let watchMeScroll = document.querySelector('main');
-  // console.log('eventListener initiated');
-  // watchMeScroll.addEventListener('scroll', setActive());
   window.addEventListener('scroll', setActive);
 }
