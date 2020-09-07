@@ -57,7 +57,12 @@ function navCreator() {
 
 // Scroll to anchor ID using scrollTO event
 function scrollToSxn(sectionId) {
-  sectionId.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  console.log('ScrollIntoView started');
+  activeSxn = document.getElementById(sectionId);
+  console.log('activesxn is: ' + activeSxn);
+  activeSxn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  console.log('ScrollIntoView ended');
+  console.log('ScrollToSxn started activeNav');
   activeNav(sectionId);
 }
 
