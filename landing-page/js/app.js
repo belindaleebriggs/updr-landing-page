@@ -28,7 +28,6 @@
 function scrollToSxn(sectionId) {
   activeSxn = document.getElementById(sectionId);
   activeSxn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-  activeNav(sectionId);
 }
 
 

@@ -83,11 +83,23 @@ section {
     color: #000;
   }
 
-.navbar__menu .menu__link:hover, .navbar__menu .section--active {
+  .navbar__menu .menu__link:hover {
+      background: #ccc;
+      color: #000;
+      transition: ease 0.3s all;
+  }
+
+  .navbar__menu .menu__link:active {
+      background: #333;
+      color: #fff;
+      transition: ease 0.3s all;
+  }
+
+
+.navbar__menu .section--active {
     background: #333;
     color: #fff;
-    transition: ease 0.3s all;
-}
+ }
 
 /* Header Styles */
 .page__header {
