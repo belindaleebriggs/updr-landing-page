@@ -26,12 +26,8 @@
 */
 // Scroll to anchor ID using scrollTO event
 function scrollToSxn(sectionId) {
-  console.log('ScrollIntoView started with sectionId of: ' + sectionId);
   activeSxn = document.getElementById(sectionId);
-  console.log('activeSxn is: ' + activeSxn);
   activeSxn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-  console.log('ScrollIntoView ended');
-  console.log('ScrollToSxn started activeNav');
   activeNav(sectionId);
 }
 
@@ -86,13 +82,11 @@ function elementInViewport(element) {
 //When a section is active or when top-level nav has been clicked, turn the corresponding nav item to it's active state by adding the appropriate css class and removing the active class from inactive links
 // function should be added eventlisteners for link click and section moving into viewport
 function activeNav(sectionId) {
-  console.log("activeNav triggered");
   // triggers based on the active section/nav links
   // when activated, remove the active class from all the nav links/section
   const navLinks = document.querySelectorAll('#navbar__list > li')
   // the ID of the section passed to the Fxn is the active section
   let activeID = sectionId;
-  console.log('the id of the active sxn is: ' + activeID)
     for (navLink of navLinks) {
       navLink.classList.remove('section--active');
       // put the active class back on only the section id equals the link html that triggered the Functions
