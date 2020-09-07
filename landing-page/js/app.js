@@ -24,6 +24,16 @@
  * Start Helper Functions
  *
 */
+// Scroll to anchor ID using scrollTO event
+function scrollToSxn(sectionId) {
+  console.log('ScrollIntoView started with sectionId of: ' + sectionId);
+  activeSxn = document.getElementById(sectionId);
+  console.log('activeSxn is: ' + activeSxn);
+  activeSxn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  console.log('ScrollIntoView ended');
+  console.log('ScrollToSxn started activeNav');
+  activeNav(sectionId);
+}
 
 
 
@@ -45,8 +55,7 @@ function navCreator() {
     const newElement = document.createElement('li');
     // get a handle to the section with the current id
     let sectionId = sxn.id;
-
-    newElement.setAttribute('onclick',scrollToSxn(sectionId));
+    newElement.setAttribute('onclick', 'scrollToSxn(\"' + sectionId + '\")');
     newElement.classList.add('menu__link');
     newElement.classList.add(sectionId); //used later in activeNav
     newElement.innerHTML =  sxn.getAttribute('data-nav');
@@ -55,16 +64,6 @@ function navCreator() {
   navList.appendChild(navDocFrag);
 }
 
-// Scroll to anchor ID using scrollTO event
-function scrollToSxn(sectionId) {
-  console.log('ScrollIntoView started');
-  activeSxn = document.getElementById(sectionId);
-  console.log('activesxn is: ' + activeSxn);
-  activeSxn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-  console.log('ScrollIntoView ended');
-  console.log('ScrollToSxn started activeNav');
-  activeNav(sectionId);
-}
 
 /**
  * End Main Functions
