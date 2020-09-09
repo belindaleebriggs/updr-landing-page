@@ -86,14 +86,12 @@ function activeNav(sectionId) {
     // when activated, remove the active class from all the nav links/section
     const navLinks = document.querySelectorAll('#navbar__list > li')
     // the ID of the section passed to the Fxn is the active section
-    console.log('sectionID passed to activeNav is ' + sectionId)
     let activeID = sectionId;
       for (navLink of navLinks) {
         navLink.classList.remove('section--active');
         // put the active class back on only the section id equals the link html that triggered the Functions
         if (navLink.classList.contains(activeID)) {
         navLink.classList.add('section--active');
-        console.log('Active link is ' + navLink)
         }
       }
 }
