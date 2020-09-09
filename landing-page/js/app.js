@@ -28,6 +28,7 @@
 function scrollToSxn(sectionId) {
   activeSxn = document.getElementById(sectionId);
   activeSxn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+  setActive();
 }
 
 
@@ -71,7 +72,7 @@ function elementInViewport(element) {
     const location = element.getBoundingClientRect();
   // compare element location in relation to window properties to determine if it's in viewport and return true if is
 
-    if(location.top >= 0 && location.left >= 0 && location.right <= window.innerWidth && location.bottom <= window.innerHeight) {
+    if(location.top >= 0 && location.left >= 0 && location.right <= window.innerWidth && location.bottom <= window.innerHeight+10) {
       return true;
       } else {
         return false;
@@ -85,12 +86,14 @@ function activeNav(sectionId) {
     // when activated, remove the active class from all the nav links/section
     const navLinks = document.querySelectorAll('#navbar__list > li')
     // the ID of the section passed to the Fxn is the active section
+    console.log('sectionID passed to activeNav is ' + sectionId)
     let activeID = sectionId;
       for (navLink of navLinks) {
         navLink.classList.remove('section--active');
         // put the active class back on only the section id equals the link html that triggered the Functions
         if (navLink.classList.contains(activeID)) {
-        navLink.classList.toggle('section--active');
+        navLink.classList.add('section--active');
+        console.log('Active link is ' + navLink)
         }
       }
 }
